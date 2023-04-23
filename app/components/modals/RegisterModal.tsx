@@ -79,6 +79,11 @@ const RegisterModal = () => {
     </div>
   );
 
+  const toggleModalAuth = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [registerModal, loginModal]);
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-4">
       <hr />
@@ -100,7 +105,7 @@ const RegisterModal = () => {
         <div className="flex flex-row justify-center items-center gap-2">
           <div>Already have an account</div>
           <div
-            onClick={loginModal.onOpen}
+            onClick={toggleModalAuth}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Login

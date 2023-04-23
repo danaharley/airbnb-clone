@@ -22,32 +22,31 @@ model User {
   favoriteIds    String[]  @db.ObjectId
 
   accounts     Account[]
-  listing      Listing[]
+  listings     Listing[]
   reservations Reservation[]
 }
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  User              User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId            String? @db.ObjectId
+  userId            String  @db.ObjectId
   type              String
   provider          String
   providerAccountId String
-  access_token      String? @db.String
   refresh_token     String? @db.String
+  access_token      String? @db.String
   expires_at        Int?
   token_type        String?
   scope             String?
   id_token          String? @db.String
   session_state     String?
 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId])
 }
 
 model Listing {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  User          User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId        String?  @db.ObjectId
   title         String
   description   String
   imageSrc      String
@@ -57,19 +56,22 @@ model Listing {
   bathroomCount Int
   guestCount    Int
   locationValue String
+  userId        String   @db.ObjectId
   price         Int
 
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
 
 model Reservation {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  User       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     String?  @db.ObjectId
-  Listing    Listing? @relation(fields: [listingId], references: [id], onDelete: Cascade)
-  listingId  String?  @db.ObjectId
+  userId     String   @db.ObjectId
+  listingId  String   @db.ObjectId
   startDate  DateTime
   endDate    DateTime
   totalPrice Int
   createdAt  DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }

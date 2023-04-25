@@ -36,8 +36,6 @@ const LoginModal = () => {
     try {
       const res = await signIn("credentials", { ...data, redirect: false });
 
-      console.log(res?.error);
-
       if (res?.ok) {
         setIsLoading(false);
 
@@ -53,6 +51,7 @@ const LoginModal = () => {
       }
     } catch (error: any) {
       console.log(error);
+      toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);
     }

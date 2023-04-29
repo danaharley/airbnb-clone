@@ -37,7 +37,9 @@ const RegisterModal = () => {
       const res = await axios.post("/api/register", data);
 
       if (res.statusText == "OK") {
+        toast.success("User created. Please Login now!");
         registerModal.onClose();
+        loginModal.onOpen();
       }
     } catch (error) {
       toast.error("something went wrong.");

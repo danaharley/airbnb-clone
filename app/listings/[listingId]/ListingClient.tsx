@@ -69,26 +69,32 @@ const ListingClient: React.FC<ListingClientProps> = ({
     }
   }, [dateRange, listing.price]);
 
-  const onCreateReservation = useCallback(async () => {
-    if (!currentUser) return loginModal.onOpen();
-
+  const onCreateReservation = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
     setIsLoading(true);
-    try {
-      const res = await axios.post("/api/reservations", {
+
+    axios
+      .post("/api/reservations", {
         totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
-        listingid: listing?.id,
+        listingId: listing?.id,
+      })
+      .then(() => {
+        toast.success("Listing reserved!");
+        setDateRange(initialDateRange);
+        // router.push('/trips');
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-
-      console.log("res", res);
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, [totalPrice, dateRange, listing?.id, currentUser, loginModal]);
+  }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal]);
 
   return (
     <Container>

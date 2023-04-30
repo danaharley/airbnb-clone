@@ -1,27 +1,27 @@
-import prisma from "../libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 
 export interface IListingParams {
   userId?: string;
   guestCount?: number;
   roomCount?: number;
   bathroomCount?: number;
-  startDate?: number;
-  endDate?: number;
-  category?: string;
+  startDate?: string;
+  endDate?: string;
   locationValue?: string;
+  category?: string;
 }
 
 export default async function getListings(params: IListingParams) {
   try {
     const {
       userId,
-      guestCount,
       roomCount,
+      guestCount,
       bathroomCount,
+      locationValue,
       startDate,
       endDate,
       category,
-      locationValue,
     } = params;
 
     let query: any = {};

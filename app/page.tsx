@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./components/Container";
-import EmptyState from "./EmptyState";
+import EmptyState from "./components/EmptyState";
 import getListings, { IListingParams } from "./actions/getListings";
 import ListingCard from "./components/listing/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";

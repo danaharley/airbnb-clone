@@ -1,6 +1,6 @@
 import React from "react";
 import getCurrentUser from "../actions/getCurrentUser";
-import EmptyState from "../EmptyState";
+import EmptyState from "../components/EmptyState";
 import getListings from "../actions/getListings";
 import PropertiesClient from "./PropertiesClient";
 import ClientOnly from "../components/ClientOnly";

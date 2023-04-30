@@ -1,6 +1,6 @@
 import React from "react";
 import getCurrentUser from "../actions/getCurrentUser";
-import EmptyState from "../EmptyState";
+import EmptyState from "../components/EmptyState";
 import getReservations from "../actions/getReservations";
 import ReservationsClient from "./ReservationsClient";
 import ClientOnly from "../components/ClientOnly";

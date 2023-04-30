@@ -1,6 +1,7 @@
 import { Nunito } from "next/font/google";
 
-import "./globals.css";
+// import "./globals.css";
+import "./style.css";
 import Navbar from "./components/navbar/Navbar";
 import RegisterModal from "./components/modals/RegisterModal";
 import LoginModal from "./components/modals/LoginModal";

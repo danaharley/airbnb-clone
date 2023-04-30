@@ -1,13 +1,15 @@
 import React from "react";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
-import getListings, { IListingParams } from "./actions/getListings";
+import getListings, { IListingsParams } from "./actions/getListings";
 import ListingCard from "./components/listing/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 
+export const dynamic = "force-dynamic";
+
 interface HomeProps {
-  searchParams: IListingParams;
+  searchParams: IListingsParams;
 }
 
 const Home = async ({ searchParams }: HomeProps) => {

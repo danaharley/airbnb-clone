@@ -19,9 +19,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   const router = useRouter();
   const params = useSearchParams();
 
-  //   console.log("router", router);
-  //   console.log("params", params);
-
   const handleClick = useCallback(() => {
     let currentQuery = {};
     console.log("currentQuery", currentQuery);
@@ -53,14 +50,14 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   return (
     <div
       onClick={handleClick}
-      className={`flex flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
+      className={`flex cursor-pointer flex-col items-center justify-center gap-2 border-b-2 p-3 transition hover:text-neutral-800 ${
         selected
           ? "border-b-neutral-800 text-neutral-800"
           : "border-transparent text-neutral-500"
       }`}
     >
       <Icon size={26} />
-      <div className="font-medium text-sm">{label}</div>
+      <div className="text-sm font-medium">{label}</div>
     </div>
   );
 };

@@ -87,7 +87,7 @@ const RegisterModal = () => {
   }, [registerModal, loginModal]);
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-4">
+    <div className="mt-4 flex flex-col gap-4">
       <hr />
       <Button
         outline
@@ -103,12 +103,12 @@ const RegisterModal = () => {
         onClick={() => signIn("github")}
       />
 
-      <div className="text-neutral-500 mt-4 font-light">
-        <div className="flex flex-row justify-center items-center gap-2">
+      <div className="mt-4 font-light text-neutral-500">
+        <div className="flex flex-row items-center justify-center gap-2">
           <div>Already have an account</div>
           <div
             onClick={toggleModalAuth}
-            className="text-neutral-800 cursor-pointer hover:underline"
+            className="cursor-pointer text-neutral-800 hover:underline"
           >
             Login
           </div>

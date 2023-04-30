@@ -32,7 +32,7 @@ const Input: React.FC<InputProps> = ({
       {formatPrice && (
         <BiDollar
           size={24}
-          className="text-neutral-700 absolute top-5 left-2"
+          className="absolute left-2 top-5 text-neutral-700"
         />
       )}
 
@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
         min={min}
         {...register(id, { required })}
-        className={`peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ${
+        className={`peer w-full rounded-md border-2 bg-white p-4 pt-6 font-light outline-none transition disabled:cursor-not-allowed disabled:opacity-70 ${
           formatPrice ? "pl-9" : "pl-4"
         } ${
           errors[id]
@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = ({
         placeholder=" "
       />
       <label
-        className={`absolute text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 
+        className={`absolute top-5 z-10 origin-[0] -translate-y-3 transform text-base duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 
         ${formatPrice ? "left-9" : "left-4"} 
         ${errors[id] ? "text-rose-500" : "text-zinc-400"}`}
       >

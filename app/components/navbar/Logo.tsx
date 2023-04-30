@@ -14,7 +14,7 @@ const Logo = () => {
       alt="logo"
       height={100}
       width={100}
-      className="hidden md:block cursor-pointer"
+      className="hidden cursor-pointer md:block"
     />
   );
 };
